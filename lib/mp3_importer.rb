@@ -7,11 +7,12 @@ class MP3Importer
     end
 
     def files
-        Dir.chdir(self.path)
+        dr = Dir.entries(self.path)
+        new_array = dr[2..-1]
         
     end 
  
-    def import(list_of_filenames)
-      list_of_filenames.each{ |filename| Song.new_by_filename(filename) }
+    def import
+      self.files.each{ |filename| Song.new_by_filename(filename) }
     end
 end
